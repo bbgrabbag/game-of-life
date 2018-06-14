@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    font-size: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+select,
+option,
+label,
+button,
+p {
+    font-size: 16px;
+}
+
+.pointer:hover {
+    cursor: pointer;
+}
+
+.app-wrapper {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 1fr 7fr;
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(200, 150, 100, .726), rgba(231, 235, 0, 0.726));
+    max-width: 100%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box {
+    border: 1px solid rgb(2, 2, 2);
+    background: linear-gradient(white, silver);
+}
+
+.selected {
+    background: linear-gradient(red, brown);
+}
+
+.controls {
+    padding: 0 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
