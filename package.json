@@ -8,6 +8,7 @@
     "react-scripts": "1.1.4"
   },
   "scripts": {
+    "deploy": "npm run build && cd build && surge",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
