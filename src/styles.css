@@ -6,7 +6,7 @@
     letter-spacing: .1em;
     font-family: MyriadArabic-Light, sans-serif;
     font-weight: 600;
-    color: #330a3fa2;
+    color: rgba(51, 10, 63, .9);
 }
 
 select,
@@ -17,7 +17,7 @@ li,
 i,
 b,
 p {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 h1 {
@@ -27,12 +27,10 @@ h1 {
 
 button {
     color: black;
-    background:transparent;
+    background: transparent;
     border-radius: 10%;
     border: 1px solid transparent;
     display: flex;
-
-
 }
 
 ul {
@@ -43,7 +41,9 @@ ul {
 li {
     text-align: left;
 }
-input, select{
+
+input,
+select {
     margin: 0 2px;
     font-size: 18px;
 }
@@ -79,14 +79,10 @@ input, select{
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    background: linear-gradient(rgba(200, 150, 100, .726), rgba(231, 235, 0, 0.726));
+    background: linear-gradient(#F3FFDF, #AE9EB2);
     max-width: 100%;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-}
-
-.grid-wrapper p {
-    color: black;
 }
 
 .grid {
@@ -96,15 +92,16 @@ input, select{
 
 .box {
     border: 1px solid rgb(2, 2, 2);
-    background: linear-gradient(white, silver);
+    background: linear-gradient(white, rgba(0, 0, 0, .1));
 }
-.box:hover{
-   transform: scale(1.05);
-   box-shadow: 5px 2px 2px black;
+
+.box:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 2px 2px black;
 }
 
 .selected {
-    background: linear-gradient(rgba(255,15, 40, .8), rgba(255,150,100,.8));
+    background: linear-gradient( rgb(135, 178, 57, .3), rgb(135, 178, 57));
 }
 
 .controls {
@@ -113,7 +110,7 @@ input, select{
     align-items: center;
 }
 
-footer{
+footer {
     display: flex;
     align-items: center;
     justify-content: center;

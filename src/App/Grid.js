@@ -19,19 +19,32 @@ export default class Grid extends Component {
         this.reset = this.reset.bind(this);
     }
     componentDidMount() {
-        const { processing } = this.state;
-        window.addEventListener("keyup", (e) => {
-            switch(e.keyCode){
-                case 32: 
-                    return processing ? this.stop(): this.start() ;
+        window.addEventListener("keyup", e => {
+            const { processing } = this.state;
+            switch (e.keyCode) {
+                case 32:
+                    processing ? this.stop() : this.start();
+                    break;
                 case 82:
-                    return this.reset();
+                    this.reset();
+                    break;
+                default:
+                    return;
             }
         })
     }
     componentWillReceiveProps(next) {
         if (next.n !== this.props.n)
-            this.setState({ grid: Array.from(Array(next.n)).map(i => false) })
+            this.setState({ grid: Array.from(Array(next.n)).map(i => false) });
+    }
+    componentDidUpdate(prevProps, prevState) {
+        const prevGrid = prevState.grid;
+        const prevProcessing = prevState.processing;
+        const { grid, processing } = this.state;
+        if(grid.every((cell, i) => cell === prevGrid[i]) && processing && prevProcessing){
+            clearInterval(this.interval);
+            this.setState({processing: false, count: prevState.count});
+        }
     }
     select(clickedI) {
         this.setState(prevState => (
@@ -51,11 +64,7 @@ export default class Grid extends Component {
             grid: genGrid(prevState.grid, Math.sqrt(this.props.n)),
             processing: true,
             count: prevState.count + 1
-        }), () => {
-            if (this.state.grid.every(status => !status))
-                clearInterval(this.interval);
-            this.setState({ processing: false });
-        })
+        }));
     }
     start() {
         clearInterval(this.interval);
