@@ -17,6 +17,20 @@ export default class App extends Component {
         const { n } = this.state;
         return (
             <div className="app-wrapper">
+
+                <div className="info-wrapper">
+                        <h1>Game of Life</h1>
+                        <ul>
+                            <li>A selected cell is considered Alive</li>
+                            <li>A living cell surrounded by more than three other living cells will die</li>
+                            <li>A living cell surrounded by fewer than two will also die</li>
+                            <li>A living cell surrounded either two or three cells will survive</li>
+                            <li>A dead cell surrounded by three living cells will birth a living cell</li>
+                        </ul>
+                </div>
+
+                <Grid n={+n} />
+
                 <div className="form-wrapper">
                     <form action="">
                         <label htmlFor="size">
@@ -26,11 +40,9 @@ export default class App extends Component {
                                 <option value="256">256</option>
                                 <option value="1024">1024</option>
                             </select>
-
                         </label>
                     </form>
                 </div>
-                <Grid n={+n} />
             </div>
         )
     }

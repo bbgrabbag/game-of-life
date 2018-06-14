@@ -9,8 +9,23 @@ select,
 option,
 label,
 button,
+li,
 p {
     font-size: 16px;
+}
+h1{
+    padding: 5px;
+}
+ul{
+    /* list-style-type: none; */
+    width: 85%;
+    margin: auto 0;
+}
+li{
+    text-align: left;
+}
+h1{
+    font-size: 24px;
 }
 
 .pointer:hover {
@@ -20,8 +35,14 @@ p {
 .app-wrapper {
     display: grid;
     height: 100vh;
-    grid-template-rows: 1fr 7fr;
+    grid-template-rows: 1fr 7fr 1 fr;
 }
+
+.info-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
 
 .form-wrapper {
     display: flex;
