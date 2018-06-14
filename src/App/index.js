@@ -19,17 +19,19 @@ export default class App extends Component {
             <div className="app-wrapper">
 
                 <div className="info-wrapper">
-                        <h1>Game of Life</h1>
-                        <ul>
-                            <li>A selected cell is considered Alive</li>
-                            <li>A living cell surrounded by more than three other living cells will die</li>
-                            <li>A living cell surrounded by fewer than two will also die</li>
-                            <li>A living cell surrounded either two or three cells will survive</li>
-                            <li>A dead cell surrounded by three living cells will birth a living cell</li>
-                        </ul>
+                    <ul>
+                        <li>A <b className="bold">selected cell</b> is considered <b className="bold">alive</b></li>
+                        <li>A <b className="bold">living cell</b> surrounded by <b className="bold">more than three</b> other living cells will die</li>
+                        <li>A <b className="bold">living cell</b> surrounded by <b className="bold">fewer than two</b> living cells will also die</li>
+                        <li>A <b className="bold">living cell</b> surrounded by <b className="bold">either two or three</b> cells will survive</li>
+                        <li>A <b className="bold">dead cell</b> surrounded by <b className="bold">three living cells</b> will birth a living cell</li>
+                    </ul>
                 </div>
 
-                <Grid n={+n} handleChange={this.handleChange}/>
+                <Grid n={+n} handleChange={this.handleChange} />
+                <footer>
+                    <h1>Game of Life</h1>
+                </footer>
             </div>
         )
     }

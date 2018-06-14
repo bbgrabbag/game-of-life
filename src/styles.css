@@ -15,28 +15,26 @@ label,
 button,
 li,
 i,
+b,
 p {
     font-size: 16px;
 }
 
 h1 {
     padding: 5px;
-    font-size: 24px;
+    font-size: 54px;
 }
 
 button {
     color: black;
-    margin: 0 2px;
+    background:transparent;
     border-radius: 10%;
-    border: 1px solid white;
+    border: 1px solid transparent;
     display: flex;
 
 
 }
-button:hover, input:hover, select:hover{
-    border: 1px solid #330a3fa2;
-    transform: scale(1.1);
-}
+
 ul {
     width: 85%;
     margin: auto 0;
@@ -51,7 +49,7 @@ input, select{
 }
 
 .bold {
-    font-weight: 700;
+    font-weight: 900;
 }
 
 .pointer:hover {
@@ -101,7 +99,8 @@ input, select{
     background: linear-gradient(white, silver);
 }
 .box:hover{
-    transform: scale(1.05);
+   transform: scale(1.05);
+   box-shadow: 5px 2px 2px black;
 }
 
 .selected {
@@ -112,6 +111,12 @@ input, select{
     padding: 0 0 10px;
     display: flex;
     align-items: center;
+}
+
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (min-height: 700px) {

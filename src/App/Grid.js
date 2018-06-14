@@ -18,6 +18,17 @@ export default class Grid extends Component {
         this.stop = this.stop.bind(this);
         this.reset = this.reset.bind(this);
     }
+    componentDidMount() {
+        const { processing } = this.state;
+        window.addEventListener("keyup", (e) => {
+            switch(e.keyCode){
+                case 32: 
+                    return processing ? this.stop(): this.start() ;
+                case 82:
+                    return this.reset();
+            }
+        })
+    }
     componentWillReceiveProps(next) {
         if (next.n !== this.props.n)
             this.setState({ grid: Array.from(Array(next.n)).map(i => false) })
@@ -77,7 +88,6 @@ export default class Grid extends Component {
                         <button onClick={this.reset} className="pointer"><i className="fa fa-repeat " aria-hidden="true"></i></button>
                         <form action="">
                             <label htmlFor="size">
-                                Grid Size
                                 <select className="pointer" onChange={handleChange} value={n} name="size" id="size">
                                     <option value="64">64</option>
                                     <option value="256">256</option>
@@ -93,10 +103,9 @@ export default class Grid extends Component {
                     </div>
                     <div style={styles} className="grid">
                         {grid.map((selected, i) => <Box select={this.select} dimension={Math.sqrt(n)} n={n} key={i} selected={selected} i={i} />)}
-
                     </div>
                 </div>
-                {processing ? <p>Processing...</p> : <p>Select cells and press 'Start'</p>}
+                {processing ? <p>Processing...</p> : <p>Select cells and press <i onClick={this.start} className="fa fa-play pointer" aria-hidden="true"></i> to begin</p>}
                 <p className="bold">Generations: {count}</p>
             </div >
         )
