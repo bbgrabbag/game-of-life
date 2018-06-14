@@ -3,6 +3,10 @@
     font-size: 0;
     box-sizing: border-box;
     text-align: center;
+    letter-spacing: .1em;
+    font-family: MyriadArabic-Light, sans-serif;
+    font-weight: 600;
+    color: #57116da4;
 }
 
 select,
@@ -15,19 +19,23 @@ p {
 }
 h1{
     padding: 5px;
+    font-size: 24px;
+
+}
+button{
+    padding: 3px;
+    color: black;
 }
 ul{
-    /* list-style-type: none; */
     width: 85%;
     margin: auto 0;
 }
 li{
     text-align: left;
 }
-h1{
-    font-size: 24px;
+.bold{
+    font-weight: 700;
 }
-
 .pointer:hover {
     cursor: pointer;
 }
@@ -35,14 +43,14 @@ h1{
 .app-wrapper {
     display: grid;
     height: 100vh;
-    grid-template-rows: 1fr 7fr 1 fr;
+    grid-template-rows: 1fr 4fr 1fr;
 }
 
 .info-wrapper{
+    padding: 3px;
     display: flex;
     flex-direction: column;
 }
-
 
 .form-wrapper {
     display: flex;
@@ -54,17 +62,22 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     background: linear-gradient(rgba(200, 150, 100, .726), rgba(231, 235, 0, 0.726));
     max-width: 100%;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
+.grid-wrapper p {
+    color: black;
+}
 
 .grid {
+
     display: flex;
     flex-wrap: wrap;
 }
+
 
 .box {
     border: 1px solid rgb(2, 2, 2);
@@ -80,4 +93,11 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+@media (min-height: 700px){
+    .grid-wrapper{
+        justify-content: center;
+    }
 }

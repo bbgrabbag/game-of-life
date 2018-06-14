@@ -72,7 +72,7 @@ export default class Grid extends Component {
                     {grid.map((selected, i) => <Box select={this.select} dimension={Math.sqrt(n)} n={n} key={i} selected={selected} i={i} />)}
                 </div>
                 {processing ? <p>Processing...</p> : <p>Select cells and press 'Start'</p>}
-                <p>Generations: {count}</p>
+                <p className="bold">Generations: {count}</p>
             </div>
         )
     }
