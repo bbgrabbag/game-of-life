@@ -29,20 +29,7 @@ export default class App extends Component {
                         </ul>
                 </div>
 
-                <Grid n={+n} />
-
-                <div className="form-wrapper">
-                    <form action="">
-                        <label htmlFor="size">
-                            Select grid size:
-                        <select onChange={this.handleChange} value={n} name="size" id="size">
-                                <option value="64">64</option>
-                                <option value="256">256</option>
-                                <option value="1024">1024</option>
-                            </select>
-                        </label>
-                    </form>
-                </div>
+                <Grid n={+n} handleChange={this.handleChange}/>
             </div>
         )
     }

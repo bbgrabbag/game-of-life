@@ -6,7 +6,7 @@
     letter-spacing: .1em;
     font-family: MyriadArabic-Light, sans-serif;
     font-weight: 600;
-    color: #57116da4;
+    color: #330a3fa2;
 }
 
 select,
@@ -14,28 +14,46 @@ option,
 label,
 button,
 li,
+i,
 p {
     font-size: 16px;
 }
-h1{
+
+h1 {
     padding: 5px;
     font-size: 24px;
+}
+
+button {
+    color: black;
+    margin: 0 2px;
+    border-radius: 10%;
+    border: 1px solid white;
+    display: flex;
+
 
 }
-button{
-    padding: 3px;
-    color: black;
+button:hover, input:hover, select:hover{
+    border: 1px solid #330a3fa2;
+    transform: scale(1.1);
 }
-ul{
+ul {
     width: 85%;
     margin: auto 0;
 }
-li{
+
+li {
     text-align: left;
 }
-.bold{
+input, select{
+    margin: 0 2px;
+    font-size: 18px;
+}
+
+.bold {
     font-weight: 700;
 }
+
 .pointer:hover {
     cursor: pointer;
 }
@@ -46,7 +64,7 @@ li{
     grid-template-rows: 1fr 4fr 1fr;
 }
 
-.info-wrapper{
+.info-wrapper {
     padding: 3px;
     display: flex;
     flex-direction: column;
@@ -68,36 +86,36 @@ li{
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
+
 .grid-wrapper p {
     color: black;
 }
 
 .grid {
-
     display: flex;
     flex-wrap: wrap;
 }
-
 
 .box {
     border: 1px solid rgb(2, 2, 2);
     background: linear-gradient(white, silver);
 }
+.box:hover{
+    transform: scale(1.05);
+}
 
 .selected {
-    background: linear-gradient(red, brown);
+    background: linear-gradient(rgba(255,15, 40, .8), rgba(255,150,100,.8));
 }
 
 .controls {
     padding: 0 0 10px;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
-
-@media (min-height: 700px){
-    .grid-wrapper{
+@media (min-height: 700px) {
+    .grid-wrapper {
         justify-content: center;
     }
 }
