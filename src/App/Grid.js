@@ -17,10 +17,12 @@ export default class Grid extends Component {
         this.start = this.start.bind(this);
         this.stop = this.stop.bind(this);
         this.reset = this.reset.bind(this);
+        this.selector = React.createRef();
     }
     componentDidMount() {
         window.addEventListener("keyup", e => {
             e.preventDefault();
+            this.selector.current.blur();
             switch (e.keyCode) {
                 case 32:
                     this.state.processing ? this.stop() : this.start();
@@ -74,11 +76,13 @@ export default class Grid extends Component {
         clearInterval(this.interval);
         this.setState({ processing: true }, () => {
             this.interval = setInterval(this._setGrid = this._setGrid.bind(this), 500);
+            this.selector.current.checked = false;
         });
     }
     stop() {
+
         clearInterval(this.interval)
-        this.setState({ processing: false });
+        this.setState({ processing: false }, () => this.selector.current.checked = false);
     }
     reset() {
         clearInterval(this.interval);
@@ -86,7 +90,7 @@ export default class Grid extends Component {
             grid: Array.from(Array(this.props.n)).map(i => false),
             processing: false,
             count: 0
-        });
+        }, () => this.selector.current.checked = false);
     }
     render() {
         const { grid, processing, count } = this.state;
@@ -96,7 +100,7 @@ export default class Grid extends Component {
         }
         return (
             <div className="grid-wrapper">
-                <div>
+                <div className="grid-main">
                     <div className="controls">
                         <button onClick={this.start} className="pointer"><i className="fa fa-play " aria-hidden="true"></i></button>
                         <button onClick={this.stop} className="pointer"><i className="fa fa-stop " aria-hidden="true"></i></button>
@@ -111,7 +115,7 @@ export default class Grid extends Component {
                             </label>
                         </form>
                         <label className="pointer" htmlFor="all">
-                            <input onChange={this.selectAll} className="pointer" id="all" type="checkbox" />
+                            <input onClick={this.selectAll} ref={this.selector} className="pointer" id="all" type="checkbox" />
                             Select all
                     </label>
 

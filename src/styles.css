@@ -80,11 +80,14 @@ select {
     align-items: center;
     justify-content: space-around;
     background: linear-gradient(#F3FFDF, #AE9EB2);
-    max-width: 100%;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
-
+.grid-main{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
 .grid {
     display: flex;
     flex-wrap: wrap;
