@@ -13,7 +13,7 @@ function calculateNeighbors(i, dimension, grid) {
 
 function isValid(i, dimension, grid, j, k) {
     if (grid[j + k] === undefined) return false;
-    if(j < 0) return false;
+    if (j < 0) return false;
     if (j + k === i) return false;
     if (j + k < j && (j + k) % dimension > j % dimension) return false;
     if (j + k > j && (j + k) % dimension < j % dimension) return false;
@@ -41,4 +41,8 @@ export const genGrid = (prevGrid, dimension) => {
         output.push(determineStatus(status, neighborCount))
     });
     return output;
+}
+
+export const isNewGrid = (prevGrid, currGrid) => {
+    return prevGrid.some((cell, i) => cell !== currGrid[i]);
 }

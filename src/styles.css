@@ -89,6 +89,13 @@ select {
     display: flex;
     flex-wrap: wrap;
 }
+.grid-footer{
+    min-height: 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex;
+    align-items: center;
+}
 
 .box {
     border: 1px solid rgb(2, 2, 2);

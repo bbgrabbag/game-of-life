@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { genGrid } from "./utils";
+import { genGrid, isNewGrid } from "./utils";
 
 import Box from "./Box";
 
@@ -20,10 +20,10 @@ export default class Grid extends Component {
     }
     componentDidMount() {
         window.addEventListener("keyup", e => {
-            const { processing } = this.state;
+            e.preventDefault();
             switch (e.keyCode) {
                 case 32:
-                    processing ? this.stop() : this.start();
+                    this.state.processing ? this.stop() : this.start();
                     break;
                 case 82:
                     this.reset();
@@ -37,21 +37,11 @@ export default class Grid extends Component {
         if (next.n !== this.props.n)
             this.setState({ grid: Array.from(Array(next.n)).map(i => false) });
     }
-    componentDidUpdate(prevProps, prevState) {
-        const prevGrid = prevState.grid;
-        const prevProcessing = prevState.processing;
-        const { grid, processing } = this.state;
-        if(grid.every((cell, i) => cell === prevGrid[i]) && processing && prevProcessing){
-            clearInterval(this.interval);
-            this.setState({processing: false, count: prevState.count});
-        }
-    }
+
     select(clickedI) {
-        this.setState(prevState => (
-            {
-                grid: prevState.grid.map((box, i) => i === clickedI ? !box : box)
-            }
-        ))
+        this.setState(prevState => ({
+            grid: prevState.grid.map((cell, i) => i === clickedI ? !cell : cell)
+        }));
     }
     selectAll(e) {
         const { checked } = e.target;
@@ -60,18 +50,34 @@ export default class Grid extends Component {
         }));
     }
     _setGrid() {
-        this.setState(prevState => ({
-            grid: genGrid(prevState.grid, Math.sqrt(this.props.n)),
-            processing: true,
-            count: prevState.count + 1
-        }));
+        this.setState(prevState => {
+            const { grid, count } = prevState;
+            const newGrid = genGrid(grid, Math.sqrt(this.props.n));
+            if (isNewGrid(grid, newGrid)) {
+                return {
+                    grid: newGrid,
+                    processing: true,
+                    count: count + 1
+                }
+            } else {
+                return {
+                    processing: false
+                }
+            }
+        }, () => {
+            if (!this.state.processing) {
+                clearInterval(this.interval);
+            }
+        });
     }
     start() {
         clearInterval(this.interval);
-        this.interval = setInterval(this._setGrid = this._setGrid.bind(this), 200);
+        this.setState({ processing: true }, () => {
+            this.interval = setInterval(this._setGrid = this._setGrid.bind(this), 500);
+        });
     }
     stop() {
-        clearInterval(this.interval);
+        clearInterval(this.interval)
         this.setState({ processing: false });
     }
     reset() {
@@ -105,7 +111,7 @@ export default class Grid extends Component {
                             </label>
                         </form>
                         <label className="pointer" htmlFor="all">
-                            <input onClick={this.selectAll} className="pointer" id="all" type="checkbox" />
+                            <input onChange={this.selectAll} className="pointer" id="all" type="checkbox" />
                             Select all
                     </label>
 
@@ -114,9 +120,11 @@ export default class Grid extends Component {
                         {grid.map((selected, i) => <Box select={this.select} dimension={Math.sqrt(n)} n={n} key={i} selected={selected} i={i} />)}
                     </div>
                 </div>
-                {processing ? <p>Processing...</p> : <p>Select cells and press <i onClick={this.start} className="fa fa-play pointer" aria-hidden="true"></i> to begin</p>}
-                <p className="bold">Generations: {count}</p>
-            </div >
+                <div className="grid-footer">
+                    {processing ? <p>Processing...</p> : <p>Select cells and press <i onClick={this.start} className="fa fa-play pointer" aria-hidden="true"></i> to begin</p>}
+                    <p className="bold">Generations: {count}</p>
+                </div>
+            </div>
         )
     }
 }
