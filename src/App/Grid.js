@@ -114,10 +114,10 @@ export default class Grid extends Component {
                                 </select>
                             </label>
                         </form>
+                        <input onClick={this.selectAll} ref={this.selector} className="pointer" id="all" type="checkbox" />
                         <label className="pointer" htmlFor="all">
-                            <input onClick={this.selectAll} ref={this.selector} className="pointer" id="all" type="checkbox" />
                             Select all
-                    </label>
+                            </label>
 
                     </div>
                     <div style={styles} className="grid">
@@ -125,7 +125,9 @@ export default class Grid extends Component {
                     </div>
                 </div>
                 <div className="grid-footer">
-                    {processing ? <p>Processing...</p> : <p>Select cells and press <i onClick={this.start} className="fa fa-play pointer" aria-hidden="true"></i> to begin</p>}
+                    <div className="no-bump">
+                        {processing ? <p>Processing...</p> : <p>Select cells and press <i onClick={this.start} className="fa fa-play pointer" aria-hidden="true"></i> to begin</p>}
+                    </div>
                     <p className="bold">Generations: {count}</p>
                 </div>
             </div>

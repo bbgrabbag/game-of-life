@@ -1,11 +1,16 @@
+@font-face {
+    font-family: 'myriad-arabic-light';
+    src: url(./fonts/exported/Myriad-Arabic/MyriadArabic.woff) format("woff");
+}
+
 * {
     margin: 0;
     font-size: 0;
     box-sizing: border-box;
     text-align: center;
     letter-spacing: .1em;
-    font-family: MyriadArabic-Light, sans-serif;
-    font-weight: 600;
+    font-family: myriad-arabic-light, sans-serif;
+    font-weight: 500;
     color: rgba(51, 10, 63, .9);
 }
 
@@ -14,10 +19,12 @@ option,
 label,
 button,
 li,
-i,
 b,
 p {
-    font-size: 18px;
+    font-size: 12px;
+}
+i{
+    font-size: 16px;
 }
 
 h1 {
@@ -36,10 +43,12 @@ button {
 ul {
     width: 85%;
     margin: auto 0;
+    padding: 0;
 }
 
 li {
     text-align: left;
+    padding: 0 0 5px;
 }
 
 input,
@@ -83,21 +92,27 @@ select {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
-.grid-main{
-    display:flex;
+
+.grid-main {
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .grid {
     display: flex;
     flex-wrap: wrap;
 }
-.grid-footer{
-    min-height: 52px;
+
+.grid-footer {
+    height: 64px;
     display: flex;
     flex-direction: column;
     justify-content: flex;
     align-items: center;
+}
+.no-bump{
+    height: 32px;
 }
 
 .box {
@@ -111,11 +126,12 @@ select {
 }
 
 .selected {
-    background: linear-gradient( rgb(135, 178, 57, .3), rgb(135, 178, 57));
+    background: linear-gradient( rgb(126, 210, 67),rgb(0, 150, 67));
 }
 
 .controls {
     padding: 0 0 10px;
+    align-self: flex-start;
     display: flex;
     align-items: center;
 }
@@ -126,8 +142,41 @@ footer {
     justify-content: center;
 }
 
+@media (min-width: 450px) {
+    select,
+    option,
+    label,
+    button,
+    li,
+    b,
+    p {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 575px) {
+    select,
+    option,
+    label,
+    button,
+    li,
+    b,
+    p {
+        font-size: 18px;
+    }
+}
+
 @media (min-height: 700px) {
     .grid-wrapper {
         justify-content: center;
+    }
+    select,
+    option,
+    label,
+    button,
+    li,
+    b,
+    p {
+        font-size: 24px;
     }
 }
